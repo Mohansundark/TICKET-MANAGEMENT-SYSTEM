@@ -1,3 +1,5 @@
+const dotenv = require('dotenv')
+dotenv.config()
 const express = require("express")
 const indexRouter = require('./routes/index')
 const app = express()
@@ -6,8 +8,8 @@ app.set('view engine', 'ejs')
 app.set('views', __dirname + '/views')
 app.set('layout', 'layouts/layout')
 // database connectivity
-const mongoose = require('mongoose');
-mongoose.connect("mongodb://localhost/tms", {
+const mongoose = require('mongoose')
+mongoose.connect(process.env.DB_URL, {
     useNewUrlParser: true
 })
 const db = mongoose.connection
